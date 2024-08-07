@@ -1,0 +1,33 @@
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Compiled Python files
+*.pyc
+
+# Compiled C++ files
+*.out
+*.exe
+# Application specific files
+venv
+node_modules
+.sass-cache
+# VS Code
+**/.vscode/
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+### Mac OS ###
+out\
