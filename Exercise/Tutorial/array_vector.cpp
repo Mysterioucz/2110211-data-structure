@@ -16,7 +16,7 @@ int main(){
     // Vector , อย่าลืม Include ด้วย, คล้าย Array แต่สามารถใส่ข้อมูลเพิ่มไปได้
     std::vector<int> b = {2,3};
     std::vector<bool> c = {true,false,true};
-    
+
     // เพิ่มข้อมูลไปที่ตัวท้าย
     b.push_back(10);
     c.push_back(false);
@@ -35,5 +35,6 @@ int main(){
     for(int i = 0; i < c.size(); i++){
         std::cout << c[i] << " ";
     }
+    
     return 0;
 }

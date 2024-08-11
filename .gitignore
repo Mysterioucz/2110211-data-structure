@@ -1,34 +1,8 @@
+# Ignore Everything
 *
+# But not .cpp
+!*.cpp
+# Or directories
 !*/
-!*.*
-# Folder view configuration files
-.DS_Store
-Desktop.ini
+!.gitignore
 
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-
-# Compiled Python files
-*.pyc
-
-# Compiled C++ files
-*.out
-*.exe
-
-# Application specific files
-venv
-node_modules
-.sass-cache
-# VS Code
-**/.vscode/
-### VisualStudioCode ###
-.vscode/*
-.vscode/tasks.json
-*.code-workspace
-### Mac OS ###
-out\
