@@ -11,7 +11,6 @@ void print_vector(vector<int> vec){
     for(int i = 0;i<vec.size();i++) cout << vec[i] << " ";
     cout << endl;
 }
-
 void print_2d_vector(vector<vector<int>> vec){
     cout << "Matrix :" << endl;
     for(int i = 0; i < vec.size(); i++){
