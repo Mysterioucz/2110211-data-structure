@@ -1,12 +1,12 @@
 #include <iostream>
-#include <bitset>
+#include <vector>
+using namespace std;
 
 int main()
 {
-    std::string binary = std::bitset<8>(128).to_string(); //to binary
-    std::cout<<binary<<"\n";
-
-    unsigned long decimal = std::bitset<8>(binary).to_ulong();
-    std::cout<<decimal<<"\n";
+    string s1,s2;
+    s1 = "test";
+    s2 = "test222";
+    if(s1==s2) cout << "string equal" << endl;
     return 0;
 }
