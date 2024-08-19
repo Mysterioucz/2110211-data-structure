@@ -4,7 +4,13 @@ using namespace std;
 void vector_swap(vector<int> &v1, vector<int> &v2, int start1, int end1,
                  int start2, int end2)
 {
-    
+    vector<int> r1=v1,r2=v2;
+    r1.erase(r1.begin() + start1,r1.begin() + end1);
+    r2.erase(r2.begin() + start2,r2.begin() + end2);
+    r1.insert(r1.begin() + start1,v2.begin() + start2,v2.begin() + end2);
+    r2.insert(r2.begin() + start2,v1.begin() + start1,v1.begin() + end1);
+    v1 = r1;
+    v2 = r2;
 }
 
 int main()
