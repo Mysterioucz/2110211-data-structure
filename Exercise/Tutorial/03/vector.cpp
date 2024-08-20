@@ -40,5 +40,8 @@ int main(){
     cout << endl;
     v3.resize(5);
     print_vector(v3);
+
+    // 2D Vector
+    vector<vector<int>> vector_2d(5,vector<int>(5));
     return 0;
 }

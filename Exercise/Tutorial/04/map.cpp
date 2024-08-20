@@ -16,7 +16,6 @@ int main(){
     for (auto it = m.begin(); it != m.end();it++){ // Map iterator เรียงตาม Key จาก น้อยไปมาก
         cout << it->first << " is mapped to " << it->second << endl;
     }
-
     //this will create mapping "abc" to 0 first and then increase it
     m["abc"]++;
     cout << "now size = " << m.size() << endl;
@@ -32,12 +31,12 @@ int main(){
     }else{
         cout << "Does not found" << endl;
     }
-    // ในการเช็คว่ามี Key ใน Map ไหมไม่ใช้วิธีควรเช็คว่า Value ที่ Pair กับ Key นั้นเป็น Default value ไหม
+    // ในการเช็คว่ามี Key ใน Map ไหมไม่ใช้วิธีเช็คว่า Value ที่ Pair กับ Key นั้นเป็น Default value ไหม
     // เพราะ Key นั้นอาจมีอยู่และ Pair กับ Default valaue จริงๆ
 
     // Question
     // Q1: Both map and set has insert and erase method but what is the return value of both function of each data structure // Ans: Both Set & Map return number of deleted element
-    // For set<int> can we do s.erase(20) // Ans: Can't because parameter need to be iterator point to element in set
+    // For set<int> can we do s.erase(20) // Ans: Yes we can
     // For map<string,bool> m, can we do m.erase("Somchai")?? // Ans: Yes, we can method erase of map can accept Key, Iterator, Range of iterator
 
     // Q2: If we wish to errase element from index 3 to index 4096 in a vector

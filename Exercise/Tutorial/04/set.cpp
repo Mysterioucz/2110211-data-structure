@@ -11,7 +11,8 @@ int main(){
     vector<int> v1 = {3,1,2};
     vector<int> v2 = {5,7,1};
     set<vector<int>> s2 = {v1,v2};
-
+    set<int> s3;
+    s3.insert(20);
     cout << "Size of s is " << s.size() << endl;
 
     s.insert(10);
