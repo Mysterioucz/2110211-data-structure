@@ -5,4 +5,5 @@
 # Or directories
 !*/
 !.gitignore
+.vscode
 
