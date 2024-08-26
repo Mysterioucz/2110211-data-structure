@@ -1,6 +1,6 @@
 #include <iostream>
 #include <array>
-#include <set>
+#include <stack>
 using namespace std;
 
 int main()
@@ -10,8 +10,9 @@ int main()
     //         return p1.second < p2.second;
     // }));
     // cout << (max_elem).first << (max_elem).second << endl;
-    set<int> s = {1,2,3,4,5,6};
-    cout << *(s.lower_bound(-1)) << endl;
+    stack<int> s({1,2,3,4,5,6});
+    stack<int> s1;
+    cout << s1.top() << endl;
 
     return 0;
 }
