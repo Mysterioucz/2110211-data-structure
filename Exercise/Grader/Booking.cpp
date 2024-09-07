@@ -47,7 +47,7 @@ int main()
         }
         if (pass)
         {
-            cout << "YES" << endl; // ถ้าเช็ค i<kj-1 จะมีปัญหา่
+            cout << "YES" << endl; // ถ้าเช็ค i<kj-1 จะมีปัญหา Confirmed    แล้วว่าปัญหาคือตรงนี้
             for (auto it : sold)
             {
                 ticket[it] = 0;
