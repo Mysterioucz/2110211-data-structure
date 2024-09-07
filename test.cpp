@@ -1,6 +1,7 @@
 #include <iostream>
-#include <array>
-#include <stack>
+#include <vector>
+#include <map>
+#include <set>
 using namespace std;
 
 int main()
@@ -10,9 +11,10 @@ int main()
     //         return p1.second < p2.second;
     // }));
     // cout << (max_elem).first << (max_elem).second << endl;
-    stack<int> s({1,2,3,4,5,6});
-    stack<int> s1;
-    cout << s1.top() << endl;
+    map<string,set<string>> m;
+    m["a"].insert("ko");
+    cout << *m["a"].begin() << endl;
+
 
     return 0;
 }
