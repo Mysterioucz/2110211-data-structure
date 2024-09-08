@@ -1,20 +1,33 @@
-#include <iostream>
-#include <vector>
-#include <map>
-#include <set>
+#include<bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    // map<string,int> m = {{"som",1},{"tw",2},{"ew",3}};
-    // auto max_elem = *(max_element(m.begin(),m.end(),[](const pair<string,int> &p1,const pair<string,int> &p2){
-    //         return p1.second < p2.second;
-    // }));
-    // cout << (max_elem).first << (max_elem).second << endl;
-    map<string,set<string>> m;
-    m["a"].insert("ko");
-    cout << *m["a"].begin() << endl;
+int mm[100005];
+vector<int> qs;
 
+int main(){
+	ios_base::sync_with_stdio(false), cin.tie(0);
 
-    return 0;
+	int n, m, start;
+	cin >> n >> m >> start;
+	while(n--){
+		int a, s;
+		cin >> a >> s;
+		mm[a] = s;
+	}
+
+	qs.push_back(start);
+	for(int i=1;i<=100000;i++){
+		if(mm[i]) start = mm[i];
+		qs.push_back(*(--qs.end()) + start);
+	}
+
+	while(m--){
+		int p, x;
+		cin >> p >> x;
+		auto it = lower_bound(qs.begin(), qs.begin()+x, p);
+		if(it-qs.begin() == x && qs[x] < p){
+			it = lower_bound(qs.begin()+x, qs.end(),p+qs[x]);
+		}
+		cout << it-qs.begin() << " ";
+	}
 }
