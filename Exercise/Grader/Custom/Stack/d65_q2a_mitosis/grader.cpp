@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
+// #include "kao.h"
 #include "student.h"
+
 
 template <typename T>
 void test()
@@ -38,6 +40,9 @@ void test()
             std::cin >> a >> b;
 
             st[v].mitosis(a, b);
+        }
+        if(op == 2){
+            break;
         }
     }
 }
