@@ -6,7 +6,8 @@
 using namespace std;
 
 int main(){
-    vector<int> v(10);
+    int a = 0;
+    cout << !a << endl;
     
     return 0;
 }
