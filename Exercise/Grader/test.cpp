@@ -6,9 +6,8 @@
 using namespace std;
 
 int main(){
-    int a = 0;
-    int b = a==0 ? 1-5:0;
-    cout << b << endl;
+    int a = 2;
+    cout << !a << endl;
     
     return 0;
 }
