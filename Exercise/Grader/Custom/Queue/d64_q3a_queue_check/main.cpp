@@ -23,7 +23,7 @@ int check_mSize(){
     return mSize == s;
 }
 int check_mCap(){
-    int cap = (mFront + mSize - 1)/last;
+    int cap = (mFront + mSize - 1)/last;// TODO fix this equation
     if(cor == 3){
         if(last >= mSize){
             return last+1;
