@@ -1,13 +1,10 @@
 #include <iostream>
-#include <map>
 #include <vector>
-#include <fstream>
 
 using namespace std;
 
 int main(){
-    int a = 2;
-    cout << !a << endl;
-    
+    vector<int> v(5);
+    cout << v.end() - v.begin();
     return 0;
 }

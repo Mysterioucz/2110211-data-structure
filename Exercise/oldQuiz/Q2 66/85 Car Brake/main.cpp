@@ -28,11 +28,12 @@ int main(){
             cout << it->second << endl;
         }else if(a == 2){
             auto it = time.lower_bound(q);
-            if(it == time.end()){
-                cout << 0 << endl;
+            if(it == time.end()){ 
+                cout << (--it)->second << endl;
                 continue;
             }
-            cout << it->second + 1<< endl;
+            auto it1 = it;
+            cout << (--it)->second - (it1)->second<< endl;
         }
     }
 
