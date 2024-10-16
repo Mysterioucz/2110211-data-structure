@@ -7,77 +7,74 @@
 
 using namespace std;
 
-class SparseGraph{
+class SparseGraph
+{
 public:
-    SparseGraph() {
+    SparseGraph()
+    {
         // Your code here
-        map<int,int> temp;
-        for(int i = 0;i < 3;i++){
-            data[i] = temp;
-        }
     }
 
-    SparseGraph(int n_in) {
+    SparseGraph(int n_in)
+    {
         // Your code here
-        map<int,int> temp;
-        for(int i = 0;i < n_in;i++){
-            data[i] = temp;
-        }
     }
 
-    SparseGraph(const SparseGraph& G) {
-        // Your code 
+    SparseGraph(const SparseGraph &G)
+    {
+        // Your code
         data = G.data;
-        edge_count = G.edge_count;
+        tranpose = G.tranpose;
     }
 
-    void AddEdge(int a, int b) {
+    void AddEdge(int a, int b)
+    {
         // Your code here
-        data[a][b] = 1;
-        edge_count++;
-    }
-
-    void RemoveEdge(int a, int b) {
-        // Your code here
-        if(data.find(a) != data.end()){
-            if(data[a].find(b) != data[a].end()){
-                data[a][b] = 0;
-                edge_count--;
-            }
+        if (!tranpose)
+        {
+            data.insert({a,b});
+        }
+        else
+        {
+            data.insert({b,a});
         }
     }
 
-    bool DoesEdgeExist(int a, int b) const {
+    void RemoveEdge(int a, int b)
+    {
         // Your code here
-        if(data.find(a) != data.end()){
-            if(data.at(a).find(b) != data.at(a).end()){
-                return data.at(a).at(b) == 1;
-            }
+        if (!tranpose)
+        {
+            data.erase({a,b});
         }
-        return false;
-
+        else
+        {
+            data.erase({b,a});
+        }
     }
 
-    SparseGraph Transpose() const {
+    bool DoesEdgeExist(int a, int b) const
+    {
         // Your code here
-        int i = 0, c = 0;
-        SparseGraph temp(data.size());
-        while((c <= edge_count)){
-            for(auto j:data.at(i)){
-                if(j.second){
-                    temp.AddEdge(j.first,i);
-                    c++;
-                }
-            }
-            i++;
+        if (!tranpose)
+        {
+            return data.find({a,b}) != data.end();
+        }else{
+            return data.find({b,a}) != data.end();   
         }
+    }
+
+    SparseGraph Transpose() const
+    {
+        SparseGraph temp;
+        temp.data = data;
+        temp.tranpose = !tranpose;
         return temp;
     }
 
 protected:
     // Your code here
-    map<int,map<int,int>> data;
-    int edge_count = 0;
+    set<pair<int,int>> data;
+    bool tranpose = false;
 };
 #endif // __SPARSE_GRAPH_H__
-
