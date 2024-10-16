@@ -12,10 +12,10 @@ void CP::stack<T>::reverse(size_t first, size_t last){
 		first = std::max(0, (int)first);
 		last = std::min(mSize - 1, last);
 		std::vector<T> temp;
-		for(size_t i = first; i <= last;i++){
-			temp.push_back(mData[i%mCap]);
+		for(int i = last; i >= (int)first;i--){
+			temp.push_back(mData[(mSize - 1) - i]);
 		}
-		int i = temp.size() - 1, j = first;
+		int i = temp.size() - 1, j = (mSize - 1) - last;
 		while(i >= 0){
 			mData[j] = temp[i];
 			i--;j++;
