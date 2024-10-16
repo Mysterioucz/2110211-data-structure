@@ -13,11 +13,13 @@ void CP::stack<T>::v_split(std::vector<std::stack<T>> &output, size_t k) const {
   for(size_t i = 0;i < (eSize * k) - mSize;i++){ // Calculate each stack size
     s[k - 1 - i]--;
   }
-  int j = 0;
   output.resize(k); // resize output
-  for(size_t i = 0;i < mSize;i++){
-    if(output[j].size() == s[j]) j++;
-    output[j].push(mData[mSize - 1 - i]);
+  int cap = 0;
+  for(size_t j = 0;j < k;j++){
+    cap += s[j];
+    for(size_t i = 0;i < s[j];i++){
+      output[j].push(mData[mSize - cap + i]);
+    }
   }
 }
 
