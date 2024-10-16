@@ -62,12 +62,12 @@ public:
         // Your code here
         int i = 0, c = 0;
         SparseGraph temp(data.size());
-        while((i < data.size())&&(c < edge_count)){
+        while((c <= edge_count)){
             for(auto j:data.at(i)){
                 if(j.second){
                     temp.AddEdge(j.first,i);
+                    c++;
                 }
-                            c++;
             }
             i++;
         }
