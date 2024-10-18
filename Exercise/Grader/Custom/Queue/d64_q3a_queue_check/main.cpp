@@ -10,14 +10,10 @@ int check_mfront(){
         return front;
     }
     return mFront < mCap;
-
 }
 int check_mSize(){
     int s = (last - mFront + mCap)%mCap;
     if(cor == 2){
-        // if(s <= mCap){
-        //     return s;
-        // }
         return s;
     }
     return mSize == s;
@@ -25,11 +21,7 @@ int check_mSize(){
 int check_mCap(){
     int cap = mFront + mSize - last;// TODO fix this equation
     if(cor == 3){
-        // if(last >= mSize){
-        //     return last+1;
-        // }
-        // return mSize;
-        return cap;
+        return cap == 0?(last + 1):cap;
     }
     return (mCap >= mSize)&&(mCap > last);
 }
@@ -49,7 +41,10 @@ int main(){
         cin >> mFront >> mSize >> mCap >> last >> cor;
         switch(cor){
             case 0:
-                if(check_last()&&check_mCap()&&check_mfront()&&check_mSize()){
+                if((last == mFront)&&(mSize == mCap)){
+                    cout << "OK" << endl;
+                    out << "OK" << endl;
+                }else if(check_last()&&check_mCap()&&check_mfront()&&check_mSize()){
                     cout << "OK" << endl;
                     out << "OK" << endl;
                 }else{
@@ -69,7 +64,10 @@ int main(){
                 break;
             case 2:
                 temp = check_mSize();
-                if((mSize <= mCap)&&(temp == mSize)){
+                if((last == mFront)&&(mSize==mCap)){
+                    cout << "OK" << endl;
+                    out << "OK" << endl;
+                }else if((mSize <= mCap)&&(temp == mSize)){
                     cout << "OK" << endl;
                     out << "OK" << endl;
                 }else{
@@ -79,7 +77,10 @@ int main(){
                 break;
             case 3:
                 temp = check_mCap();
-                if((mCap >= mSize)&&(mCap >= last + 1)){
+                if((last == mFront)&&(mSize==mCap)){
+                    cout << "OK" << endl;
+                    out << "OK" << endl;
+                }else if((mCap >= mSize)&&(((last >= mFront + mSize)&&(mCap >= temp))||((last < mFront + mSize)&&(mCap == temp)))){
                     cout << "OK" << endl;
                     out << "OK" << endl;
                 }else{
