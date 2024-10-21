@@ -4,6 +4,7 @@
 using namespace std;
 
 int main(){
+    //TODO need to implement to run faster
     ios_base::sync_with_stdio(false); cin.tie(0);
     ofstream out("output.txt");
     int n,m,k,t,d,a,q;
