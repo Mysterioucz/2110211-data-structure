@@ -9,7 +9,7 @@
 template <typename T,typename Comp >
 bool CP::priority_queue<T,Comp>::find(T k) const {
   //your code here
-  for(int i = 0;i < mSize;i++){
+  for(size_t i = 0;i < mSize;i++){
     if(mData[i] == k){
       return true;
     }
@@ -21,7 +21,7 @@ template <typename T,typename Comp >
 int CP::priority_queue<T,Comp>::find_level(T k) const {
   //your code here
   int idx = -1;
-  for(int i = 0;i < mSize;i++){
+  for(size_t i = 0;i < mSize;i++){
     if(mData[i] == k){
       idx = i;
     }
