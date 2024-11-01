@@ -4,14 +4,21 @@
 using namespace std;
 
 void heap_check(const vector<int> &v,int k){
-    for(int j = 0;j < (k*v.size() + 1);j++){ // check the node that have left child
-        int l = k*j + 1; // left most child
-        while(((l-1)/k == j)&&(l < v.size())){
-            if(v[l] > v[j]){
-                cout << "false" << endl;
-                return;
-            }
-            l++;
+    // for(int j = 0;j < (k*v.size() + 1);j++){ // check the node that have left child
+    //     int l = k*j + 1; // left most child
+    //     while(((l-1)/k == j)&&(l < v.size())){
+    //         if(v[l] > v[j]){
+    //             cout << "false" << endl;
+    //             return;
+    //         }
+    //         l++;
+    //     }
+    // }
+    for(int i = 1;i < v.size();i++){
+        int parIdx = (i-1)/k;
+        if(v[parIdx] < v[i]){
+            cout << "false" << endl;
+            return;
         }
     }
     cout << "true" << endl;
