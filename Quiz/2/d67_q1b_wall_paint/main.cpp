@@ -30,7 +30,7 @@ int main(){
             layer[{s,e}] = 1;
             maxLayer = 1;
         }else{
-            auto it = wall.upper_bound({s,e});
+            auto it = wall.lower_bound({s,e});
             if((it != wall.end())&&(e < it->first)){
                 if(it != wall.begin())it--;
                 else{
