@@ -1,5 +1,5 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 using namespace std;
 
 int main(){
@@ -8,7 +8,6 @@ int main(){
     if(k == 1){
         cout << n-1 << endl;
     }else{
-        
         cout << ceil((log((k - 1)*n + 1))/1/(log(k)/1) - 1) << endl;
     }
     return 0;

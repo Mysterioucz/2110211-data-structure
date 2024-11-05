@@ -25,11 +25,6 @@ int main(){
     int maxLayer = 0;
     for(int i = 1;i < paint.size();i++){
         int s = paint[i].first, e = paint[i].second;
-        // int validity = accumulate(wall.begin() + s,wall.begin() + e + 1,0);
-        // if(((wall[e+1] == wall [e])&&(wall[s-1] == wall[s])&&(validity == (wall[s])*(e - s + 1)) )|| validity == 0){
-        //     for(int j = s; j < e + 1;j++) wall[j]++;
-        //     maxLayer = maxLayer<wall[s] ? wall[s]:maxLayer;
-        // }
         if(wall.empty()){
             wall.insert({s,e});
             layer[{s,e}] = 1;
