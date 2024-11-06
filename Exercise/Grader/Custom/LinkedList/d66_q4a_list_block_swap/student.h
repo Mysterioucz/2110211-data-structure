@@ -6,6 +6,7 @@
 template <typename T>
 void CP::list<T>::block_swap(iterator a1, iterator a2, iterator b1, iterator b2) {
 	// write your code here
+	// TODO FIX THIS
 	if(a1==a2 && b1==b2)return;
 	else if(a1==a2 && b1!=a2){
 		auto tmp1 = b1.ptr, tmp2 = b2.ptr->prev;
