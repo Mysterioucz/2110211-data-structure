@@ -12,7 +12,7 @@ void CP::map_bst<KeyT, MappedT, CompareT>::my_recur(node* n, const KeyT &a, cons
     // Inorder Traversal
     if(n == NULL) return;
     if(n->left != NULL && !mLess((n->data).first,a)) my_recur(n->left,a,b,result);
-    if(a <= (n->data).first && (n->data).first <= b){
+    if((mLess(a,(n->data).first) || a == (n->data).first) && (mLess((n->data).first,b) || (n->data).first == b)){
         result.push_back((n->data).second);
     }
     if(n->right != NULL && mLess((n->data).first ,b)) my_recur(n->right,a,b,result);
