@@ -330,17 +330,28 @@ class map_bst
 }
 
 //you can add other function as well BUT CANNOT MODIFY MAIN nor map_bst class
-void my_recur(node* n, CP::map_bst<int,int> &bst){
-  if(n->data.first - 1 > 0) bst[n->data.first - 1];
-}
+// void my_recur(node* n, CP::map_bst<int,int> &bst){
+//   if(n->data.first - 1 > 0) bst[n->data.first - 1];
+// }
 
 void gen_best_bst(int n,CP::map_bst<int,int> &bst) {
   //write your code here
   //you can create additional function
   //but you cannot modify main or the map_bst class
-  bst[(n+1)/s];
-  my_recur(bst.mRoot, bst);
-
+  int c = 1,k = 0,mid = (n+1)/2,tmp = (n+1)/2;
+  while(c < n){
+    c *= 2;
+    k++;
+  }
+  c = 1;
+  for(int i = 0;i < k;i++){
+    for(int j = 0;j < c;j++){
+      bst[tmp + j*mid];
+    }
+    mid = tmp;
+    tmp /= 2;
+    c *= 2;
+  }
   // this is the example code of adding 1..n to the bst in ascending order
   // for (int i = 1;i <= n;i++) {
   //   bst[i] = 100;
