@@ -21,7 +21,6 @@ int my_recur(node* n, std::pair<int,KeyT> &tmp){
             tmp.first = diff;
         }
     }
-
     return hl>hr ? (hl):(hr);
 }
 
