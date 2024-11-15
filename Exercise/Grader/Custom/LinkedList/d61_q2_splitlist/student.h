@@ -1,29 +1,39 @@
-void splitList(list<T>& list1, list<T>& list2) {
+void splitList(list<T> &list1, list<T> &list2)
+{
     // Add your code here
-    if(mSize == 0) return;
-    int c = 1;
-    auto it = begin();
-
-    // List 1
-    it.ptr->prev = list1.mHeader->prev;
-    list1.mHeader->prev->next = it.ptr;
-    while(c < (mSize + 1)/2){
-        it++;c++;
+    if (mSize == 1)
+    {
+        list1.mHeader->next = mHeader->next;
+        mHeader->next->prev = list1.mHeader;
+        mHeader->next = mHeader;
+        mHeader->prev = mHeader;
     }
-    auto tmp = it;it++;c++;
-    tmp.ptr->next = list1.mHeader;
-    list1.mHeader->prev = tmp.ptr;
-    list1.mSize += (mSize + 1)/2;
+    else if (mSize > 1)
+    {
+        node *start_a = mHeader->next;
+        node *end_a = mHeader;
+        node *start_b = mHeader;
+        node *end_b = mHeader->prev;
 
-    // List 2
-    it.ptr->prev = list2.mHeader->prev;
-    list2.mHeader->prev->next = it.ptr;
-    mHeader->prev->next = list2.mHeader;
-    list2.mHeader->prev = mHeader->prev;
-    list2.mSize += mSize - (mSize + 1)/2;
+        int rnd = mSize - (mSize / 2);
+        for (int i = 0; i < rnd; i++)
+        {
+            end_a = end_a->next;
+        }
+        start_b = end_a->next;
 
-    // Current List clear
-    mHeader->next = mHeader;
+        list1.mHeader->next = start_a;
+        start_a->prev = mHeader;
+        list1.mHeader->prev = end_a;
+        start_b->prev = mHeader;
+        list2.mHeader->next = start_b;
+        end_b->next = mHeader;
+        list2.mHeader->prev = end_b;
+        end_a->next = mHeader;
+        list1.mSize = rnd;
+        list2.mSize = mSize - rnd;
+    }
     mHeader->prev = mHeader;
+    mHeader->next = mHeader;
     mSize = 0;
 }
