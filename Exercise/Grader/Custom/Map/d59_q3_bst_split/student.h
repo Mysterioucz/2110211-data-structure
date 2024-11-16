@@ -50,7 +50,7 @@ CP::map_bst<KeyT,MappedT,CompareT> CP::map_bst<KeyT,MappedT,CompareT>::split(Key
         mRoot = sNode;
       }
       par_sNode->left = tNode;
-      if(tNode != NULL){
+      if(tNode != NULL){ // TODO maybe fix this?
         tNode->parent->right = NULL;
         tNode->parent = par_sNode;
     }
