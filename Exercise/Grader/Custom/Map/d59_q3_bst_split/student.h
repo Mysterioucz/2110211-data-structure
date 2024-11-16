@@ -7,9 +7,7 @@ template <typename KeyT,
 CP::map_bst<KeyT,MappedT,CompareT> CP::map_bst<KeyT,MappedT,CompareT>::split(KeyT val) {
   //your code here
   CP::map_bst<KeyT,MappedT,CompareT> result;
-  node* curNode = mRoot;
-  node* lastNode = NULL;
-  node* lastRes = NULL;
+  node* curNode = mRoot;node* lastNode = NULL;node* lastRes = NULL;
   bool status = false;
   mRoot = NULL;
   while(curNode != NULL){
