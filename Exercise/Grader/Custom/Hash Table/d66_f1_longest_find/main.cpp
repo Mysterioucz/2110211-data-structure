@@ -32,13 +32,13 @@ void hash_erase(int b, int n){
     }
 }
 
-void hash_probe(){
-    for(int i = 0;i < mBuckets.size();i++){
+void hash_probe(){ // maxInsert <= maxFind เสมอ
+    for(int i = 0;i < mBuckets.size();i++){ // ไล่เช็ค mBuckets แต่ละช่องโดยให้แต่ละช่องนั้นเป็น home_pos
         bool insFound = false;
-        if(mBuckets[i].first == 0) continue;
-        int pos = i, j = 0;
-        while(mBuckets[pos].first != 0){
-            if(mBuckets[pos].first == 1 && !insFound){
+        if(mBuckets[i].first == 0) continue; // ถ้าช่องว่างให้ข้าม
+        int pos = i, j = 0; // home_pos is i เพราะเราไล่เช็ค mBuckets แต่ละช่อง
+        while(mBuckets[pos].first != 0){ // ไล่วนหาแบบ find ช่องว่าง
+            if(mBuckets[pos].first == 1 && !insFound){ // ถ้าเจอช่องแทรกได้แทรก
                 insFound = true;
                 maxInsert = max(maxInsert,j + 1);
             }
@@ -46,7 +46,7 @@ void hash_probe(){
             pos = (pos + 2*j - 1) % mBuckets.size();
         }
         maxFind = max(maxFind , j + 1);
-        if(!insFound) maxInsert = max(maxInsert, j + 1);
+        if(!insFound) maxInsert = max(maxInsert, j + 1); // กรณีที่ เราไล่ไปเรื่อยๆ แต่ไม่เจอช่องที่ Status เป็น 1 เลย
     }
 }
 
