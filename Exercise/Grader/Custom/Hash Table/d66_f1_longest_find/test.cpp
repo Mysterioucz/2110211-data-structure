@@ -1,49 +1,73 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
-int main() {
-    int n, m, res1 = 1, res2 = 1;
-    std::cin >> n >> m;
-
-    int hashTable[n] = {};
-    int mark[n] = {};
-
-    for(int i=1, a, b; i<=m; i++) {
-        std::cin >> a >> b;
-        if(a == 1) {
-            int j = 0;
-            while(mark[(b + j*j)%n] == 2) {
-                if(hashTable[(b + j*j)%n] == b) break;
-                ++j;
+int main () {
+    ios_base::sync_with_stdio(false); cin.tie(0);
+    int n, m;
+    cin >> n >> m;
+    vector<int> hashTable(n, -1);
+    vector<int> deletePos(n, 0);
+    for (int i = 0; i < m; i++) {
+        int a, x;
+        cin >> a >> x;
+        int homePos = x % n;
+        if (a == 1) {
+            int probe = 0;
+            int curr_pos = homePos;
+            while (hashTable[curr_pos] != -1 && !deletePos[curr_pos]) { // FIXED
+                probe++;
+                curr_pos = (homePos + probe*probe) % n;
             }
-            hashTable[(b + j*j)%n] = b;
-            mark[(b + j*j)%n] = 2;
+            hashTable[curr_pos] = x;
+            deletePos[curr_pos] = 0;
         }
-        else {
-            int j = 0;
-            while((mark[(b + j*j)%n] == 2 || mark[(b + j*j)%n] == 1)) {
-                if(hashTable[(b + j*j)%n] == b) break;
-                ++j;
+        if (a == 2) {
+            int probe = 0;
+            int curr_pos = homePos;
+            while (hashTable[curr_pos] != x && hashTable[curr_pos] != -1) {
+                probe++;
+                curr_pos = (homePos + probe*probe) % n;
             }
-            if(hashTable[(b + j*j)%n] == b) {
-                hashTable[(b + j*j)%n] = 0;
-                mark[(b + j*j)%n] = 1;
+            if (hashTable[curr_pos] == x && deletePos[curr_pos] != 1) {
+                deletePos[curr_pos] = 1;
+                hashTable[curr_pos] = -2;
             }
         }
     }
-
-    for(int i=0; i<n; i++) {
-        int j = 0;
-        while(mark[(i + j*j)%n] == 2) {
-            ++j;
-            res1 = std::max(res1, j + 1);
+    int maxProbeForInsert = 0;
+    int maxProbeForFind = 0;
+    int maxFindPos = 0;
+    for (int i = 0; i < n; i++) {
+        int homePos = i;
+        int probe = 0;
+        int curr_pos = homePos;
+        bool flag = false;
+        while (hashTable[curr_pos] != -1) {
+            if (deletePos[curr_pos] == 1 && !flag) {
+                maxProbeForInsert = max(probe+1, maxProbeForInsert);
+                flag = true;
+            }
+            probe++;
+            curr_pos = (homePos + probe*probe) % n;
         }
-
-        j = 0;
-        while(mark[(i + j*j)%n] == 2 || mark[(i + j*j)%n] == 1) {
-            ++j;
-            res2 = std::max(res2, j + 1);
+        if (probe+1 > maxProbeForFind){
+            maxProbeForFind = probe+1;
+            maxFindPos = i;
         }
+        if (!flag) {
+            maxProbeForInsert = max(maxProbeForInsert, probe+1);
+        }
+        
     }
-
-    std::cout << res1 << ' ' << res2;
+    for (auto & x : hashTable) {
+        cout << x  << " ";
+    }
+    cout << endl;
+    for (auto & x : deletePos) {
+        cout << x << " ";
+    }
+    cout << endl;
+    cout << maxProbeForInsert << " " << maxProbeForFind << endl;
 }
